@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    /* other styles */
+  
+    /* media query for screens with a width of 576px or more */
+    @media (min-width: 576px) {
+      flex-direction: row;
+      
+    }
+  }
+
+  .card-deck .card {
+    height: 500px;
+  }
+  
+  .card-deck .card-body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
