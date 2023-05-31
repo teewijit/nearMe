@@ -9,6 +9,48 @@ CREATE TABLE tblRole (
   delete_date DATE
 );
 
+CREATE TABLE tblUser (
+  id SERIAL PRIMARY KEY,
+  username TEXT,
+  password TEXT,
+  first_name TEXT,
+  last_name TEXT,
+  brithday DATE,
+  sex TEXT,
+  tel INTEGER,
+  email TEXT,
+  role_id INTEGER,
+  approve INTEGER,
+  update_by INTEGER,
+  update_date DATE,
+  create_by INTEGER,
+  create_date DATE,
+  delete_by INTEGER,
+  delete_date DATE
+);
+
+CREATE TABLE tblStore (
+  id SERIAL PRIMARY KEY,
+  storeName TEXT,
+  storeImg TEXT,
+  storeAddress TEXT,
+  storeTel INTEGER,
+  storeOpen INTEGER,
+  storeClose INTEGER,
+  storeDetail TEXT,
+  storeLon TEXT,
+  storeLat TEXT,
+  isVet TEXT,
+  status TEXT,
+  userId INTEGER,
+  update_by INTEGER,
+  update_date DATE,
+  create_by INTEGER,
+  create_date DATE,
+  delete_by INTEGER,
+  delete_date DATE
+);
+
 CREATE TABLE tb_user_session (
   id SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL,
