@@ -44,7 +44,7 @@ module.exports.Create = async (req, res) => {
     if (req.file) {
       const extension = path.extname(req.file.originalname);
       const newFileName = `uploads/${uuidV4()}${extension}`;
-      const fontPath = `C:/Users/Admin/Desktop/nearMe/client/public`;
+      const fontPath = `C:/Users/Admin/Documents/GitHub/nearMe/client/public`;
       const filename = `${fontPath}/${newFileName}`;
 
       console.log(req.body);
@@ -59,7 +59,7 @@ module.exports.Create = async (req, res) => {
         }
       });
 
-      const { create_by, Hn, name, remark, sex, type_id,user_id } = req.body;
+      const { create_by, Hn, name, remark, sex, type_id, user_id } = req.body;
       const image = newFileName ? newFileName : null;
 
       if (!(create_by && Hn && name && remark && sex && type_id && user_id)) {
@@ -116,7 +116,7 @@ module.exports.Update = async (req, res) => {
       // if there's a new file, delete the old file and store the new one
       const extension = path.extname(req.file.originalname);
       const newFileName = `uploads/${uuidV4()}${extension}`;
-      const fontPath = `C:/Users/Admin/Desktop/nearMe/client/public`;
+      const fontPath = `C:/Users/Admin/Documents/GitHub/nearMe/client/public`;
       const filename = `${fontPath}/${newFileName}`;
       const oldname = `${fontPath}/${animalsImg}`;
       fs.unlinkSync(oldname); // delete the old file
@@ -132,9 +132,9 @@ module.exports.Update = async (req, res) => {
         sex, // update the image name in the database
         update_by,
         update_date: new Date(),
-        image:animalsImg,
+        image: animalsImg,
       },
-      { where: { id:req.params.id } }
+      { where: { id: req.params.id } }
     );
     res.status(200).json({ status: true, message: "Update Success" });
   } catch (error) {

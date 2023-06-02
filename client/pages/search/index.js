@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "next/head";
-import Navbar from "@/layout/Navbar";
+import Navbar from "@/layout/Navbar/index";
 import Cards from "@/component/Card";
 import styled from "styled-components";
 import Loader from "@/component/Loader";

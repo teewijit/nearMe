@@ -57,6 +57,7 @@ const Clinic = () => {
       store.storeName.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+
   const DataUserAprrove =
     userAppPending &&
     userAppPending.filter(

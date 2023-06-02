@@ -62,7 +62,7 @@ module.exports.Create = async (req, res) => {
     if (req.file) {
       const extension = path.extname(req.file.originalname);
       const newFileName = `uploads/${uuidV4()}${extension}`;
-      const fontPath = `C:/Users/Admin/Desktop/nearMe/client/public`;
+      const fontPath = `C:/Users/Admin/Documents/GitHub/nearMe/client/public`;
       const filename = `${fontPath}/${newFileName}`;
 
       fs.rename(req.file.path, filename, (err) => {
@@ -75,63 +75,63 @@ module.exports.Create = async (req, res) => {
         }
       });
 
-      
-    const {
-      create_by,
-      storeLat,
-      storeLon,
-      storeName,
-      storeAddress,
-      storeTel,
-      storeOpen,
-      storeClose,
-      storeDetail,
-      status,
-      isVet,
-    } = req.body;
-    const storeImg = newFileName ? newFileName : null;
 
-    const userId = create_by;
+      const {
+        create_by,
+        storeLat,
+        storeLon,
+        storeName,
+        storeAddress,
+        storeTel,
+        storeOpen,
+        storeClose,
+        storeDetail,
+        status,
+        isVet,
+      } = req.body;
+      const storeImg = newFileName ? newFileName : null;
 
-    if (
-      !(
-        create_by &&
-        storeLat &&
-        storeLon &&
-        storeName &&
-        storeAddress &&
-        storeTel &&
-        storeOpen &&
-        storeClose &&
-        storeDetail &&
-        status &&
-        isVet
-      )
-    ) {
-      res
-        .status(400)
-        .json({ message: "Bad request: missing required field(s)" });
-      return;
-    }
+      const userId = create_by;
 
-    const newUser = await TblStore.create({
-      storeName,
-      storeImg,
-      storeAddress,
-      storeTel,
-      storeOpen,
-      storeClose,
-      storeDetail,
-      storeLon,
-      storeLat,
-      status,
-      userId,
-      create_by,
-      create_date: new Date(),
-      isVet,
-    });
+      if (
+        !(
+          create_by &&
+          storeLat &&
+          storeLon &&
+          storeName &&
+          storeAddress &&
+          storeTel &&
+          storeOpen &&
+          storeClose &&
+          storeDetail &&
+          status &&
+          isVet
+        )
+      ) {
+        res
+          .status(400)
+          .json({ message: "Bad request: missing required field(s)" });
+        return;
+      }
 
-    res.status(201).json({ status: true, message: "Create Success" });
+      const newUser = await TblStore.create({
+        storeName,
+        storeImg,
+        storeAddress,
+        storeTel,
+        storeOpen,
+        storeClose,
+        storeDetail,
+        storeLon,
+        storeLat,
+        status,
+        userId,
+        create_by,
+        create_date: new Date(),
+        isVet,
+      });
+
+      res.status(201).json({ status: true, message: "Create Success" });
     }
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -160,7 +160,7 @@ module.exports.Update = async (req, res) => {
       // if there's a new file, delete the old file and store the new one
       const extension = path.extname(req.file.originalname);
       const newFileName = `uploads/${uuidV4()}${extension}`;
-      const fontPath = `C:/Users/Admin/Desktop/nearMe/client/public`;
+      const fontPath = `C:/Users/Admin/Documents/GitHub/nearMe/client/public`;
       const filename = `${fontPath}/${newFileName}`;
       const oldname = `${fontPath}/${storeImg}`;
       fs.unlinkSync(oldname); // delete the old file

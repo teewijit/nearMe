@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Header from "next/head";
 import { useEffect, useState } from "react";
 import FormAddStore from "@/layout/Form/FormAddStore/FormAddStore";
-import Navbar from "@/layout/Navbar";
+import Navbar from "@/layout/Navbar/index";
 
 const PageOverlay = styled.div`
   width: 100%;

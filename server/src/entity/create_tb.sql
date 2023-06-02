@@ -186,3 +186,38 @@ WHERE
   ap.delete_by IS NULL
 ORDER BY
   ap.id
+
+  
+CREATE VIEW view_user AS
+SELECT
+	u.id,
+    u.username,
+    u.password,
+    u.first_name,
+    u.last_name,
+    u.brithday,
+    u.sex,
+    u.tel,
+    u.email,
+    u.role_id,
+    r.name AS role_name,
+    u.approve,
+  COALESCE(create_by.first_name, '-') AS create_by,
+  COALESCE(create_by.first_name, '-') AS create_by_name,
+  COALESCE(u.create_date, '-') AS create_date,
+  COALESCE(update_by.first_name, '-') AS update_by,
+  COALESCE(update_by.first_name, '-') AS update_by_name,
+  COALESCE(u.update_date, '-') AS update_date,
+  delete_by.first_name AS delete_by,
+  delete_by.first_name AS delete_by_name,
+  delete_by.delete_date AS delete_date
+FROM
+  tbluser AS u
+  INNER JOIN tblrole AS r ON u.role_id = r.id
+  LEFT JOIN tbluser AS create_by ON u.create_by = create_by.id
+  LEFT JOIN tbluser AS update_by ON u.update_by = update_by.id
+  LEFT JOIN tbluser AS delete_by ON u.delete_by = delete_by.id
+WHERE
+  u.delete_by IS NULL
+ORDER BY
+  u.id

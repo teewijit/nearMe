@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "next/head";
 import Card from "../../component/Card";
-import Navbar from "@/layout/Navbar";
+import Navbar from "@/layout/Navbar/backup2";
 import { useEffect, useState } from "react";
 
 export default function index() {

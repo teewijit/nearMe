@@ -37,32 +37,32 @@ const Admin = () => {
   useEffect(() => {
     const fetchStoreData = async () => {
       const response = await AppointmentService.Search();
+      console.log(response);
       setAppPending(response.data);
     };
     fetchStoreData();
   }, []);
 
-  console.log(appPending);
 
   const DataAppPending =
     appPending && appPending.filter((user) => user.status === "รออนุมัติ");
-    const filteredDataAppPending = DataAppPending.filter((user) =>
-      Object.values(user).some(
-        (value) =>
-          typeof value === "string" &&
-          value.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    );
+  const filteredDataAppPending = DataAppPending.filter((user) =>
+    Object.values(user).some(
+      (value) =>
+        typeof value === "string" &&
+        value.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
 
   const DataAppAprrove =
     appPending && appPending.filter((user) => user.approve === "อนุมัติ");
-    const filteredDataAppAprrove = DataAppAprrove.filter((user) =>
-      Object.values(user).some(
-        (value) =>
-          typeof value === "string" &&
-          value.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    );
+  const filteredDataAppAprrove = DataAppAprrove.filter((user) =>
+    Object.values(user).some(
+      (value) =>
+        typeof value === "string" &&
+        value.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
 
   const DataUserPending =
     userPending && userPending.filter((user) => user.approve === 0);
@@ -492,10 +492,9 @@ const Admin = () => {
                         alt={store.storeName}
                         onClick={() =>
                           handleImgClick(
-                            `./${
-                              store.storeImg
-                                ? `./${store.storeImg}`
-                                : "./noImg.jpg"
+                            `./${store.storeImg
+                              ? `./${store.storeImg}`
+                              : "./noImg.jpg"
                             }`
                           )
                         }
@@ -645,7 +644,7 @@ const Admin = () => {
                         href="#"
                         onClick={() => handleCancelUserClick(user.id)}
                       >
-                      <i className="bi bi-clipboard-x-fill"></i>
+                        <i className="bi bi-clipboard-x-fill"></i>
                       </a>
                     </td>
                   </tr>
