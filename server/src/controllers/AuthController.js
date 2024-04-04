@@ -62,7 +62,7 @@ module.exports.singIn = async (req, res) => {
       { ac_uid: tokenUID, rf_uid: refreshTokenUID },
       { where: { user_id: user.id } }
     );
-  } else if(!existingSession){
+  } else if (!existingSession) {
     let created_user_session = await TblUserSession.create(
       {
         user_id: user.id,
@@ -77,7 +77,7 @@ module.exports.singIn = async (req, res) => {
     );
     // console.log(created_user_session);
     // return res.send({created_user_session})
-  }  
+  }
 
   let options = {};
   res.cookie("ac", token, { ...options, maxAge: 1000 * 60 * 5 });
@@ -90,7 +90,7 @@ module.exports.singIn = async (req, res) => {
   );
   return res.send({
     status: true,
-    message: "Successful sing in",
+    message: "Successful sign in",
     data: {
       role_id: user.role_id,
       tokenUID,
